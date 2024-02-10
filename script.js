@@ -1,16 +1,29 @@
 const keyboard = document.querySelectorAll('.keyboard-btn');
 const displayBtn = document.querySelector('.display-btn');
+const container = document.querySelector('body');
+
+function addClassName(key) {
+  keyboard.forEach((element) => {
+    if (element.innerHTML.toLowerCase() === key) {
+      element.classList.add('key');
+    }
+
+    setTimeout(() => {
+      element.classList.remove('key');
+    }, 100);
+  });
+}
 
 function insertChar(char) {
   const charContainer = document.createElement('p');
   charContainer.classList.add('char-container');
   charContainer.innerText = char;
-
   displayBtn.insertAdjacentElement('beforeend', charContainer);
 }
 
 function handleKeyDown(event) {
   if (event.keyCode >= 60 && event.keyCode <= 90) {
+    addClassName(event.key);
     insertChar(event.key);
     this.classList.add('key');
   } else {
@@ -18,6 +31,6 @@ function handleKeyDown(event) {
   }
 }
 
-keyboard.forEach((button) => {
-  button.addEventListener('keydown', handleKeyDown);
+container.addEventListener('keydown', (event) => {
+  handleKeyDown(event);
 });
