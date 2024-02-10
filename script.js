@@ -12,6 +12,7 @@ function insertChar(char) {
 function handleKeyDown(event) {
   if (event.keyCode >= 60 && event.keyCode <= 90) {
     insertChar(event.key);
+    this.classList.add('key');
   } else {
     console.log('something went wrong!');
   }
