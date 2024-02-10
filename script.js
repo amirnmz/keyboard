@@ -1,36 +1,22 @@
-const btnk = document.querySelectorAll(".keyboard-btn");
-// const charlist = [97, 98];
-// const sentence = String.fromCharCode(...charlist);
-var i;
-// console.log(sentence);
+const keyboard = document.querySelectorAll('.keyboard-btn');
+const displayBtn = document.querySelector('.display-btn');
 
+function insertChar(char) {
+  const charContainer = document.createElement('p');
+  charContainer.classList.add('char-container');
+  charContainer.innerText = char;
 
-
-
-
-for (i = 0; i < btnk.length; i++) {
-    btnk[i].addEventListener("keydown", function (event) {
-        // console.log(event.keyCode);
-        console.log(event.Code);
-        console.log(event.key);
-       
-
-
-        this.classList.add("key");
-
-
-
-    })
-
-
-
+  displayBtn.insertAdjacentElement('beforeend', charContainer);
 }
 
-
-
-for (i = 0; i < btnk.length; i++) {
-    btnk[i].addEventListener('keyup', function (event) {
-
-        this.classList.remove('key');
-    })
+function handleKeyDown(event) {
+  if (event.keyCode >= 60 && event.keyCode <= 90) {
+    insertChar(event.key);
+  } else {
+    console.log('something went wrong!');
+  }
 }
+
+keyboard.forEach((button) => {
+  button.addEventListener('keydown', handleKeyDown);
+});
