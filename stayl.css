@@ -47,10 +47,11 @@ button {
   color: #fff;
   font-size: 20px;
   outline: 0;
+  box-shadow: 2px 1px 3px 0px black;
 }
 
 .key {
   color: red;
   box-shadow: 5px 5px 18px blue;
-  font-size: x-large;
+ 
 }
